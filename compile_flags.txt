@@ -1,0 +1,6 @@
+-Wall
+-Werror
+-Wextra
+-Wno-unused-parameter
+-Wno-unused-variable
+-std=c99

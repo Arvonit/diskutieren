@@ -1,0 +1,9 @@
+---
+BasedOnStyle: LLVM
+IndentWidth: 4
+BreakBeforeBraces: Mozilla
+AllowShortFunctionsOnASingleLine: Empty
+ColumnLimit: 100
+BinPackArguments: false
+BinPackParameters: false
+...
