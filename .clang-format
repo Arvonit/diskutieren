@@ -4,6 +4,6 @@ IndentWidth: 4
 BreakBeforeBraces: Mozilla
 AllowShortFunctionsOnASingleLine: Empty
 ColumnLimit: 100
+AlignAfterOpenBracket: Align
+PenaltyBreakBeforeFirstCallParameter: 10000
 BinPackArguments: false
-BinPackParameters: false
-...
