@@ -1,7 +1,10 @@
 #include "util.h"
+#include <ctype.h>
 #include <errno.h>
 #include <netdb.h>
 #include <netinet/in.h>
+#include <stdarg.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,13 +12,13 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-// void check_error(int status, int line)
-// {
-//     if (status < 0) {
-//         printf("[ERROR] Line %d, Socket %d: %s\n", line, getpid(), strerror(errno));
-//         exit(-1);
-//     }
-// }
+void check_error(int status, int line)
+{
+    if (status < 0) {
+        fprintf(stderr, "[ERROR] line %d: %s\n", line, strerror(errno));
+        exit(EXIT_FAILURE);
+    }
+}
 
 void *get_in_addr(struct sockaddr *sa)
 {
@@ -55,4 +58,13 @@ int receive_all(int socket_fd, void *buffer, size_t length, int flags)
         length -= n;
     }
     return 0;
+}
+
+void strupr(char *string)
+{
+    char *s = string;
+    while (*s) {
+        *s = toupper((unsigned char)*s);
+        s++;
+    }
 }
