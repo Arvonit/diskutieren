@@ -3,3 +3,4 @@ a.out
 client
 server
 *.o
+build
