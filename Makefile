@@ -16,7 +16,6 @@ SERVER_SRC := server.c util.c
 CLIENT_SRC := $(patsubst %.c, $(SRC_DIR)/%.c, $(CLIENT_SRC))
 SERVER_SRC := $(patsubst %.c, $(SRC_DIR)/%.c, $(SERVER_SRC))
 
-$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 CLIENT_OBJ := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(CLIENT_SRC))
 SERVER_OBJ := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SERVER_SRC))
 DEP := $(CLIENT_OBJ:.o=.d) $(SERVER_OBJ:.o=.d) # Dependency files
