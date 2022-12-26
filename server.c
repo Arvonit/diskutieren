@@ -17,6 +17,7 @@
 #include <unistd.h>
 
 // Global variables
+// TODO: Get rid of these, this is a bad practice lol
 User *users[MAX_CLIENTS];
 Channel *channels[MAX_CHANNELS];
 pthread_mutex_t users_mutex;
@@ -205,28 +206,30 @@ void handle_client(void *arg)
 
 bool channel_exists(char *channel_name)
 {
+    bool exists = false;
     pthread_mutex_lock(&channels_mutex);
     for (int i = 0; i < MAX_CHANNELS; i++) {
         if (channels[i] && strcmp(channels[i]->name, channel_name) == 0) {
-            pthread_mutex_unlock(&channels_mutex);
-            return true;
+            exists = true;
+            break;
         }
     }
     pthread_mutex_unlock(&channels_mutex);
-    return false;
+    return exists;
 }
 
 bool nickname_exists(char *nickname)
 {
+    bool exists = false;
     pthread_mutex_lock(&users_mutex);
     for (int i = 0; i < MAX_CLIENTS; i++) {
         if (users[i] && strcmp(users[i]->nickname, nickname) == 0) {
-            pthread_mutex_unlock(&users_mutex);
-            return true;
+            exists = true;
+            break;
         }
     }
     pthread_mutex_unlock(&users_mutex);
-    return false;
+    return exists;
 }
 
 Channel *create_channel(char *name)
