@@ -23,12 +23,12 @@ DEP := $(CLIENT_OBJ:.o=.d) $(SERVER_OBJ:.o=.d) # Dependency files
 CLIENT_EXE := $(BUILD_DIR)/irc
 SERVER_EXE := $(BUILD_DIR)/ircd
 
-.PHONY: all clean
+.PHONY: all debug clean
 
 all: client server
 
 debug: CFLAGS += -g
-debug: $(CLIENT_EXE) $(SERVER_EXE)
+debug: client server
 
 # $^ means target prerequisites
 client: $(CLIENT_OBJ) | $(BUILD_DIR)
